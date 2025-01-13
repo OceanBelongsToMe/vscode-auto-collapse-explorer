@@ -4,7 +4,6 @@ import { commands, ExtensionContext, TextEditor, window, workspace } from 'vscod
 
 // Import the module and reference it with the alias vscode in your code below
 const COLLAPSE = 'workbench.files.action.collapseExplorerFolders';
-const REVEAL = 'revealInExplorer';
 const FOCUS_EDITOR = 'workbench.action.focusActiveEditorGroup';
 
 
@@ -21,12 +20,11 @@ async function showOnlyCurrentFile(textEditor: TextEditor | undefined) {
     return;
   }
   const configs = workspace.getConfiguration('auto-collapse-explorer-with-toggle');
-  if(configs.get("active") === true){
+  if (configs.get("active") === true) {
     await commands.executeCommand(COLLAPSE);
-    await commands.executeCommand(REVEAL);
     await commands.executeCommand(FOCUS_EDITOR);
   }
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }
